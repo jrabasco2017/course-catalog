@@ -1,0 +1,17 @@
+<% provide(:title, @user.username) %>
+<div class="row">
+    <aside class="col-md-4">
+        <section class="user_info">
+            <h1>
+                <%= gravatar_for @user %>
+                <%= @user.username %>
+            </h1>
+        </section>
+    </aside>
+</div>
+
+<%= link_to 'Courses', courses_index_path %>
+
+<%= link_to 'Subjects', subjects_index_path %>
+
+<%= link_to 'Instructors', instructors_index_path %>
