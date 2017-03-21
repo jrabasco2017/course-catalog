@@ -1,1 +1,1 @@
-json.extract! @instructor, :name, :created_at, :updated_at
+json.extract! @instructor, :first, :last, :ident, :created_at, :updated_at

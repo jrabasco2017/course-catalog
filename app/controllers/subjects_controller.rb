@@ -5,11 +5,8 @@ class SubjectsController < ApplicationController
 
 
 def index
-  file = File.read('subject.json')
   @subjects= Subject.all
-end
-
-def show
+  return @subjects
 end
 
 def new
@@ -36,7 +33,7 @@ private
   end
 
   def subject_params
-    params.require(:subject).permit(:name)
+    params.require(:subject).permit(:name, :ider)
   end
 
 end

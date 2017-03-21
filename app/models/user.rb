@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-
+  has_and_belongs_to_many :enrollments
+  has_many :courses, through: :enrollments
   attr_accessor :remember_token
 
   before_save { self.email = email.downcase }

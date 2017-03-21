@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Search for the class</h1>
+<%= form_tag(courses_searchIndex_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Courses" %>
+  <% categories_array = Subject.all.map { |subject| [ subject.name] } %>
+  <%= select_tag("Subject", options_for_select(categories_array, params[:search_column])) %>
+  <%= submit_tag "Search", :name => nil %>
+<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>Id Code</th>
+      <th>Subjects</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.name %></td>
+        <td><%= course.idep %></td>
+        <td><%= course.subjects %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
