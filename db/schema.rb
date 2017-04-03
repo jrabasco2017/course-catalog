@@ -21,10 +21,11 @@ ActiveRecord::Schema.define(version: 20170321151637) do
   end
 
   create_table "enrollments", force: :cascade do |t|
-    t.string   "course"
+    t.integer  "course_id"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["course_id", "user_id"], name: "index_enrollments_on_course_id_and_user_id"
   end
 
   create_table "enrolls", force: :cascade do |t|

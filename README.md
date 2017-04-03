@@ -1,4 +1,3 @@
 ﻿This is the Course Catalog enjoy.
 
-Also when the page is first loaded it throws and error message however when it is refreshed it works without an issue.
-
+The login is for brandeis users only so you need to use @brandeis for the email otherwise it won’t let you in. This is not a bug but a functionality

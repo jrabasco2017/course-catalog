@@ -8,16 +8,6 @@
 
 
 #User.create(name: "JJ", password: "12345678", email: "jrabasco@brandeis.edu")
-file = File.read('db/course.json')
-course_hasher = JSON.parse(file)
-course_hasher.each do |c|
-  subArray = Array.new()
-  c["subjects"].each do |innerC|
-    oner = innerC["id"]
-    subArray.append(oner)
-  end
-  @new_course = Course.create(name: c["name"], idep: c["code"], subjects: subArray.join(","))
-end
 
 file = File.read('db/instructor.json')
 inst_hasher = JSON.parse(file)
@@ -46,4 +36,5 @@ cour_hasher.each do |c|
     end
   end
   Search.create(key: temper, linked: subberArray.join(","))
+  Course.create(name: c["name"], idep: c["code"], subjects: subberArray.join(","))
 end

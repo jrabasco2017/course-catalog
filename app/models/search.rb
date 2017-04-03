@@ -5,10 +5,8 @@ class Search < ApplicationRecord
     indicTwo =0
     if search.present?
       theEntries =  theEntries.where(["key LIKE ?", "%#{search}%"])
-    else
-      indicOne=1
     end
-    theEntries =  theEntries.where(["linked LIKE ?", "%#{search_column}%"])
+      theEntries =  theEntries.where(["linked LIKE ?", "%#{search_column}%"])
     return theEntries
   end
 end

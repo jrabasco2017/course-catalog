@@ -6,10 +6,14 @@ class SearchesController < ApplicationController
     @searches= Search.search(params[:search], params[:subject])
     respond_to do |format|
       format.html # index.html.erb
+      format.js
       format.json { render json: @searches }
     end
 end
 
+def enroller
+  current_user.enrollments.create(course_name: params[:my_param], user_id: current_user.id)
+end
   # GET /events/1
   # GET /events/1.json
   def show

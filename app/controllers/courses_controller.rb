@@ -7,17 +7,21 @@ class CoursesController < ApplicationController
       @courses= Course.all
   end
 
+  def enroller
+    current_user.enrollments.create(course_id: params[:my_param], user_id: current_user.id)
+  end
+
   def show
   end
 
   def searchIndex
-    @courses= Course.search(params[:search], params[:search_column])
+    @courses= Course.search(params[:search], params[:subject])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @courses }
     end
   end
-  
+
   def new
     @course = Course.new
   end

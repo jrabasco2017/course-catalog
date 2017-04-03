@@ -11,9 +11,28 @@ class EnrollsController < ApplicationController
     def show
     end
 
+    def updater
+
+    end
+
     def adder
-      @rollup = Enroll.create(course: params[:my_param])
-      @rollup.save
+      @reddit = Array.new
+      Enroll.all.each do |inner|
+        @reddit.append(inner)
+      end
+      tester = params[:my_param]
+      counter =0
+      @reddit.each do |check|
+        if tester.to_s == check.to_s
+          counter =1
+        end
+      end
+
+      if counter != 1
+        @rollup = Enroll.create(course: params[:my_param])
+        @rollup.save
+        @reddit.append(tester)
+      end
       @enrolls = Enroll.all
     end
 
@@ -22,10 +41,6 @@ class EnrollsController < ApplicationController
       @enroll = Enroll.new
     end
 
-    def creator
-      Enroll.create(course: params[:my_param])
-      @enrolls = Enroll.all
-    end
     # GET /events/1/edit
     def edit
     end
